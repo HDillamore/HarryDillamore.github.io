@@ -273,7 +273,7 @@ body {
   }
 }
 
-/* Smaller Screens (<= 1080px): Side-by-Side Subgrid Below Main */
+/* Smaller Screens (<= 1080px): Side-by-Side Below Main */
 @media (max-width: 1080px) {
   .wings-subgrid {
     display: grid;
