@@ -12,6 +12,14 @@
 <body>
   <div class="container">
     <header class="header fade-in">
+      <div class="avatar-wrapper">
+        <!-- Replace src with your local file, e.g. ./assets/profile.jpg -->
+        <img 
+          src="https://placehold.co/200x200/f0f0f0/737373?text=Profile" 
+          alt="Harry Dillamore profile picture" 
+          class="avatar"
+        >
+      </div>
       <h1 class="name">Harry Dillamore</h1>
       <p class="role">Third-Year Game Development Student</p>
       <p class="bio">
@@ -46,39 +54,115 @@
     <section class="section fade-in">
       <h2 class="section-title">Selected Work</h2>
       <div class="projects">
-        <article class="project-card fade-in">
-          <div class="project-image-wrapper">
-            <!-- Replace src with your local file or hosted image path (e.g., assets/project1.png) -->
-            <img src="https://img.itch.zone/aW1hZ2UvNDA5ODQ1NS8yNDQyODg0NS5wbmc=/794x1000/shiP7O.png" alt="Project 1 preview" class="project-image">
-          </div>
-          <div class="project-header">
-            <h3>Colourways</h3>
-            <span class="tag">Unreal Engine</span>
-          </div>
-          <p>A small puzzle game developed in unreal engine, using real time texture painting combined with global shaders to allow you to uncover the world around you through paint and trial and error.</p>
-        </article>
 
-        <article class="project-card fade-in">
-          <div class="project-image-wrapper">
-            <img src="https://placehold.co/800x450/f0f0f0/737373?text=Project+2+Preview" alt="Project 2 preview" class="project-image">
-          </div>
-          <div class="project-header">
-            <h3>Project Title 02</h3>
-            <span class="tag">Unity</span>
-          </div>
-          <p>Brief summary of systems design, scripting, or visual effects.</p>
-        </article>
+        <!-- Project 01 -->
+        <div class="project-row fade-in">
+          <article class="project-card main-card">
+            <div class="project-image-wrapper">
+              <img src="https://placehold.co/800x450/f0f0f0/737373?text=Project+1+Main" alt="Project 1 preview" class="project-image">
+            </div>
+            <div class="project-header">
+              <h3>Project Title 01</h3>
+              <span class="tag">Unreal Engine</span>
+            </div>
+            <p>Brief summary of gameplay mechanics or technical art implementation.</p>
+          </article>
 
-        <article class="project-card fade-in">
-          <div class="project-image-wrapper">
-            <img src="https://placehold.co/800x450/f0f0f0/737373?text=Project+3+Preview" alt="Project 3 preview" class="project-image">
+          <div class="wings-subgrid">
+            <aside class="project-card wing-card wing-left">
+              <div class="project-image-wrapper wing-thumb">
+                <img src="https://placehold.co/400x250/f5f5f5/888888?text=Detail+A" alt="Detail preview A" class="project-image">
+              </div>
+              <div class="wing-content">
+                <span class="wing-tag">Overview</span>
+                <p>Supplemental breakdown or mechanic context.</p>
+              </div>
+            </aside>
+
+            <aside class="project-card wing-card wing-right">
+              <div class="project-image-wrapper wing-thumb">
+                <img src="https://placehold.co/400x250/f5f5f5/888888?text=Detail+B" alt="Detail preview B" class="project-image">
+              </div>
+              <div class="wing-content">
+                <span class="wing-tag">Implementation</span>
+                <p>Specific engine feature, script, or shader pass.</p>
+              </div>
+            </aside>
           </div>
-          <div class="project-header">
-            <h3>Project Title 03</h3>
-            <span class="tag">Raylib</span>
+        </div>
+
+        <!-- Project 02 -->
+        <div class="project-row fade-in">
+          <article class="project-card main-card">
+            <div class="project-image-wrapper">
+              <img src="https://placehold.co/800x450/f0f0f0/737373?text=Project+2+Main" alt="Project 2 preview" class="project-image">
+            </div>
+            <div class="project-header">
+              <h3>Project Title 02</h3>
+              <span class="tag">Unity</span>
+            </div>
+            <p>Brief summary of systems design, scripting, or visual effects.</p>
+          </article>
+
+          <div class="wings-subgrid">
+            <aside class="project-card wing-card wing-left">
+              <div class="project-image-wrapper wing-thumb">
+                <img src="https://placehold.co/400x250/f5f5f5/888888?text=Detail+A" alt="Detail preview A" class="project-image">
+              </div>
+              <div class="wing-content">
+                <span class="wing-tag">Overview</span>
+                <p>Supplemental breakdown or mechanic context.</p>
+              </div>
+            </aside>
+
+            <aside class="project-card wing-card wing-right">
+              <div class="project-image-wrapper wing-thumb">
+                <img src="https://placehold.co/400x250/f5f5f5/888888?text=Detail+B" alt="Detail preview B" class="project-image">
+              </div>
+              <div class="wing-content">
+                <span class="wing-tag">Implementation</span>
+                <p>Specific engine feature, script, or shader pass.</p>
+              </div>
+            </aside>
           </div>
-          <p>Core gameplay loop, rendering pipeline, or systems experiment.</p>
-        </article>
+        </div>
+
+        <!-- Project 03 -->
+        <div class="project-row fade-in">
+          <article class="project-card main-card">
+            <div class="project-image-wrapper">
+              <img src="https://placehold.co/800x450/f0f0f0/737373?text=Project+3+Main" alt="Project 3 preview" class="project-image">
+            </div>
+            <div class="project-header">
+              <h3>Project Title 03</h3>
+              <span class="tag">Raylib</span>
+            </div>
+            <p>Core gameplay loop, rendering pipeline, or systems experiment.</p>
+          </article>
+
+          <div class="wings-subgrid">
+            <aside class="project-card wing-card wing-left">
+              <div class="project-image-wrapper wing-thumb">
+                <img src="https://placehold.co/400x250/f5f5f5/888888?text=Detail+A" alt="Detail preview A" class="project-image">
+              </div>
+              <div class="wing-content">
+                <span class="wing-tag">Overview</span>
+                <p>Supplemental breakdown or mechanic context.</p>
+              </div>
+            </aside>
+
+            <aside class="project-card wing-card wing-right">
+              <div class="project-image-wrapper wing-thumb">
+                <img src="https://placehold.co/400x250/f5f5f5/888888?text=Detail+B" alt="Detail preview B" class="project-image">
+              </div>
+              <div class="wing-content">
+                <span class="wing-tag">Implementation</span>
+                <p>Specific engine feature, script, or shader pass.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+
       </div>
     </section>
 
