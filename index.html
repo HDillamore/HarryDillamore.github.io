@@ -11,7 +11,7 @@
 </head>
 <body>
   <div class="container">
-    <header class="header">
+    <header class="header fade-in">
       <h1 class="name">Harry Dillamore</h1>
       <p class="role">Third-Year Game Development Student</p>
       <p class="bio">
@@ -25,7 +25,7 @@
       </div>
     </header>
 
-    <section class="section">
+    <section class="section fade-in">
       <h2 class="section-title">Focus Areas</h2>
       <div class="stack-list">
         <div class="stack-item">
@@ -43,47 +43,63 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section fade-in">
       <h2 class="section-title">Selected Work</h2>
       <div class="projects">
-        <article class="project-card">
+        <article class="project-card fade-in">
+          <div class="project-image-wrapper">
+            <!-- Replace src with your local file or hosted image path (e.g., assets/project1.png) -->
+            <img src="https://placehold.co/800x450/f0f0f0/737373?text=Project+1+Preview" alt="Project 1 preview" class="project-image">
+          </div>
           <div class="project-header">
             <h3>Project Title 01</h3>
             <span class="tag">Unreal Engine</span>
           </div>
           <p>Brief summary of gameplay mechanics or technical art implementation.</p>
-          <div class="project-links">
-            <a href="#">Source Code &rarr;</a>
-          </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card fade-in">
+          <div class="project-image-wrapper">
+            <img src="https://placehold.co/800x450/f0f0f0/737373?text=Project+2+Preview" alt="Project 2 preview" class="project-image">
+          </div>
           <div class="project-header">
             <h3>Project Title 02</h3>
             <span class="tag">Unity</span>
           </div>
           <p>Brief summary of systems design, scripting, or visual effects.</p>
-          <div class="project-links">
-            <a href="#">Source Code &rarr;</a>
-          </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card fade-in">
+          <div class="project-image-wrapper">
+            <img src="https://placehold.co/800x450/f0f0f0/737373?text=Project+3+Preview" alt="Project 3 preview" class="project-image">
+          </div>
           <div class="project-header">
             <h3>Project Title 03</h3>
             <span class="tag">Raylib</span>
           </div>
           <p>Core gameplay loop, rendering pipeline, or systems experiment.</p>
-          <div class="project-links">
-            <a href="#">Source Code &rarr;</a>
-          </div>
         </article>
       </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer fade-in">
       <p>&copy; Harry Dillamore</p>
     </footer>
   </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
