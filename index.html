@@ -10,33 +10,17 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <div class="site-container">
-    
-    <!-- Profile / Header Section -->
+  <div class="site-wrapper">
+
+    <!-- Header / Bio -->
     <header class="header fade-in">
-      <div class="avatar-wrapper">
-        <svg class="avatar-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="pfpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#fffbeb"/>
-              <stop offset="50%" stop-color="#fef3c7"/>
-              <stop offset="100%" stop-color="#fde68a"/>
-            </linearGradient>
-            <linearGradient id="jacketGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#1f2937"/>
-              <stop offset="100%" stop-color="#111827"/>
-            </linearGradient>
-          </defs>
-          <circle cx="60" cy="60" r="58" fill="url(#pfpGrad)" stroke="#fcc603" stroke-width="3"/>
-          <path d="M22 108 C24 84, 40 76, 60 76 C80 76, 96 84, 98 108 Z" fill="url(#jacketGrad)"/>
-          <path d="M48 76 L60 92 L72 76 Z" fill="#ffffff" opacity="0.9"/>
-          <path d="M54 78 L60 94 L66 78 Z" fill="#fcc603"/>
-          <ellipse cx="60" cy="52" rx="19" ry="22" fill="#fed7aa"/>
-          <path d="M41 48 C41 30, 52 24, 60 24 C72 24, 79 32, 79 46 C75 44, 70 45, 66 40 C61 45, 52 44, 47 43 C44 45, 42 47, 41 48 Z" fill="#374151"/>
-          <circle cx="53" cy="52" r="2.2" fill="#1f2937"/>
-          <circle cx="67" cy="52" r="2.2" fill="#1f2937"/>
-          <path d="M55 62 Q60 66 65 62" stroke="#9a3412" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-        </svg>
+      <div class="avatar-container">
+        <!-- Replace src with your image path (e.g. ./assets/avatar.jpg) -->
+        <img 
+          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" 
+          alt="Harry Dillamore profile picture" 
+          class="avatar"
+        >
       </div>
       <h1 class="name">Harry Dillamore</h1>
       <p class="role">Third-Year Game Development Student</p>
@@ -51,7 +35,7 @@
       </div>
     </header>
 
-    <!-- Focus Areas Section -->
+    <!-- Focus Areas -->
     <section class="section fade-in">
       <h2 class="section-title">Focus Areas</h2>
       <div class="stack-list">
@@ -70,238 +54,157 @@
       </div>
     </section>
 
-    <!-- Selected Work Section -->
+    <!-- Selected Work -->
     <section class="section fade-in">
       <h2 class="section-title">Selected Work</h2>
-      <p class="hover-hint">Hover or tap cards to view technical breakdowns</p>
       
       <div class="projects">
-        
-        <!-- Project 1: Unreal Engine -->
+
+        <!-- Project 01: Unreal Engine -->
         <div class="project-row fade-in" tabindex="0">
           <article class="project-card main-card">
-            <div class="card-media">
-              <svg viewBox="0 0 600 338" xmlns="http://www.w3.org/2000/svg">
-                <rect width="600" height="338" fill="#121824"/>
-                <defs>
-                  <radialGradient id="ueGlow" cx="50%" cy="45%" r="50%">
-                    <stop offset="0%" stop-color="#fcc603" stop-opacity="0.22"/>
-                    <stop offset="100%" stop-color="#121824" stop-opacity="0"/>
-                  </radialGradient>
-                </defs>
-                <rect width="600" height="338" fill="url(#ueGlow)"/>
-                <g opacity="0.1" stroke="#ffffff" stroke-width="1">
-                  <line x1="0" y1="84" x2="600" y2="84"/>
-                  <line x1="0" y1="169" x2="600" y2="169"/>
-                  <line x1="0" y1="254" x2="600" y2="254"/>
-                  <line x1="150" y1="0" x2="150" y2="338"/>
-                  <line x1="300" y1="0" x2="300" y2="338"/>
-                  <line x1="450" y1="0" x2="450" y2="338"/>
-                </g>
-                <circle cx="300" cy="150" r="62" fill="none" stroke="#fcc603" stroke-width="2.5" opacity="0.8"/>
-                <polygon points="300,105 342,175 258,175" fill="none" stroke="#ffffff" stroke-width="2"/>
-                <circle cx="300" cy="150" r="6" fill="#fcc603"/>
-                <text x="300" y="255" text-anchor="middle" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="13" letter-spacing="3">UNREAL ENGINE PROJECT</text>
-                <text x="300" y="278" text-anchor="middle" fill="#9ca3af" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1">PHYSICS &amp; SHADER SHOWCASE</text>
-              </svg>
+            <div class="media-box main-media">
+              <img 
+                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80" 
+                alt="Unreal Engine Project Preview" 
+                class="card-img"
+              >
             </div>
-            <div class="card-body">
+            <div class="card-content">
               <div class="card-header">
-                <h3>Unreal Technical Showcase</h3>
+                <h3>Unreal Engine Project</h3>
                 <span class="tag">Unreal Engine</span>
               </div>
-              <p>Character kinematics, state replication, and custom HLSL post-process shading pipeline.</p>
+              <p>Primary focus project exploring character mechanics, state machines, and shader implementations.</p>
             </div>
           </article>
 
           <div class="wings-subgrid">
             <aside class="project-card wing-card wing-left">
-              <div class="card-media wing-media">
-                <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="400" height="240" fill="#0f172a"/>
-                  <path d="M30 180 Q100 60 200 130 T370 70" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
-                  <circle cx="100" cy="98" r="5" fill="#fcc603"/>
-                  <circle cx="200" cy="130" r="5" fill="#fcc603"/>
-                  <circle cx="300" cy="110" r="5" fill="#fcc603"/>
-                  <text x="30" y="215" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="10">RUNTIME MOTION PROFILING</text>
-                </svg>
+              <div class="media-box wing-media">
+                <img 
+                  src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=500&q=80" 
+                  alt="Gameplay Mechanics Detail" 
+                  class="card-img"
+                >
               </div>
-              <div class="wing-text">
-                <span class="wing-kicker">Tech Art</span>
-                <h4>Shader Passes</h4>
-                <p>Material function graph for volumetric depth and edge glow.</p>
+              <div class="wing-content">
+                <span class="wing-tag">Gameplay</span>
+                <p>System mechanics, player controller logic, and input buffering.</p>
               </div>
             </aside>
 
             <aside class="project-card wing-card wing-right">
-              <div class="card-media wing-media">
-                <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="400" height="240" fill="#0f172a"/>
-                  <rect x="40" y="45" width="90" height="45" rx="4" fill="#1e293b" stroke="#fcc603" stroke-width="1.5"/>
-                  <rect x="270" y="45" width="90" height="45" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-                  <rect x="155" y="145" width="90" height="45" rx="4" fill="#1e293b" stroke="#4ade80" stroke-width="1.5"/>
-                  <path d="M130 67 L270 67 M85 90 L155 160 M315 90 L245 160" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3 3"/>
-                  <text x="85" y="72" text-anchor="middle" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="9">INPUT</text>
-                  <text x="315" y="72" text-anchor="middle" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="9">SYNC</text>
-                  <text x="200" y="172" text-anchor="middle" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="9">SOLVER</text>
-                </svg>
+              <div class="media-box wing-media">
+                <img 
+                  src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=500&q=80" 
+                  alt="Technical Art Detail" 
+                  class="card-img"
+                >
               </div>
-              <div class="wing-text">
-                <span class="wing-kicker">Programming</span>
-                <h4>Gameplay State</h4>
-                <p>Modular interaction components and responsive physics resolution.</p>
+              <div class="wing-content">
+                <span class="wing-tag">Tech Art</span>
+                <p>Material functions, custom post-process passes, and visual polish.</p>
               </div>
             </aside>
           </div>
         </div>
 
-        <!-- Project 2: Unity -->
+        <!-- Project 02: Unity -->
         <div class="project-row fade-in" tabindex="0">
           <article class="project-card main-card">
-            <div class="card-media">
-              <svg viewBox="0 0 600 338" xmlns="http://www.w3.org/2000/svg">
-                <rect width="600" height="338" fill="#18181b"/>
-                <defs>
-                  <radialGradient id="unityGlow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.18"/>
-                    <stop offset="100%" stop-color="#18181b" stop-opacity="0"/>
-                  </radialGradient>
-                </defs>
-                <rect width="600" height="338" fill="url(#unityGlow)"/>
-                <g fill="none" stroke="#fcc603" stroke-width="2" opacity="0.85">
-                  <polygon points="300,105 345,130 345,182 300,207 255,182 255,130"/>
-                  <line x1="300" y1="105" x2="300" y2="156"/>
-                  <line x1="345" y1="182" x2="300" y2="156"/>
-                  <line x1="255" y1="182" x2="300" y2="156"/>
-                </g>
-                <text x="300" y="255" text-anchor="middle" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="13" letter-spacing="3">UNITY SYSTEMS PROTOTYPE</text>
-                <text x="300" y="278" text-anchor="middle" fill="#a1a1aa" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1">C# ARCHITECTURE &amp; SHADERS</text>
-              </svg>
+            <div class="media-box main-media">
+              <img 
+                src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=900&q=80" 
+                alt="Unity Project Preview" 
+                class="card-img"
+              >
             </div>
-            <div class="card-body">
+            <div class="card-content">
               <div class="card-header">
-                <h3>Unity Systems Prototype</h3>
+                <h3>Unity Prototype</h3>
                 <span class="tag">Unity</span>
               </div>
-              <p>Event-driven gameplay framework, custom procedural shaders, and inventory architecture.</p>
+              <p>Gameplay systems and C# architecture focused on modular interaction and visual effects.</p>
             </div>
           </article>
 
           <div class="wings-subgrid">
             <aside class="project-card wing-card wing-left">
-              <div class="card-media wing-media">
-                <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="400" height="240" fill="#111827"/>
-                  <circle cx="120" cy="110" r="45" fill="none" stroke="#fcc603" stroke-width="2"/>
-                  <circle cx="160" cy="110" r="45" fill="none" stroke="#38bdf8" stroke-width="2"/>
-                  <circle cx="140" cy="140" r="45" fill="none" stroke="#ec4899" stroke-width="2"/>
-                  <text x="250" y="105" fill="#f9fafb" font-family="'JetBrains Mono', monospace" font-size="10">HLSL URP</text>
-                  <text x="250" y="125" fill="#9ca3af" font-family="'JetBrains Mono', monospace" font-size="9">SURFACE GRAPH</text>
-                </svg>
+              <div class="media-box wing-media">
+                <img 
+                  src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=500&q=80" 
+                  alt="C# Architecture Detail" 
+                  class="card-img"
+                >
               </div>
-              <div class="wing-text">
-                <span class="wing-kicker">VFX</span>
-                <h4>Shader Graph</h4>
-                <p>Stylized environmental shaders with runtime material parameters.</p>
+              <div class="wing-content">
+                <span class="wing-tag">C# Architecture</span>
+                <p>Event-driven architecture and decoupled gameplay managers.</p>
               </div>
             </aside>
 
             <aside class="project-card wing-card wing-right">
-              <div class="card-media wing-media">
-                <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="400" height="240" fill="#111827"/>
-                  <rect x="40" y="50" width="320" height="28" rx="3" fill="#1f2937" stroke="#374151"/>
-                  <rect x="40" y="90" width="320" height="28" rx="3" fill="#1f2937" stroke="#374151"/>
-                  <rect x="40" y="130" width="320" height="28" rx="3" fill="#1f2937" stroke="#374151"/>
-                  <rect x="44" y="54" width="120" height="20" fill="#fcc603" opacity="0.8"/>
-                  <rect x="44" y="94" width="230" height="20" fill="#38bdf8" opacity="0.8"/>
-                  <rect x="44" y="134" width="70" height="20" fill="#4ade80" opacity="0.8"/>
-                  <text x="40" y="195" fill="#9ca3af" font-family="'JetBrains Mono', monospace" font-size="9">EVENT DISPATCH TIMINGS</text>
-                </svg>
+              <div class="media-box wing-media">
+                <img 
+                  src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500&q=80" 
+                  alt="Shader Graph Detail" 
+                  class="card-img"
+                >
               </div>
-              <div class="wing-text">
-                <span class="wing-kicker">Architecture</span>
-                <h4>C# Events</h4>
-                <p>Decoupled game loop utilizing scriptable-object data channels.</p>
+              <div class="wing-content">
+                <span class="wing-tag">Shaders</span>
+                <p>URP Shader Graph workflows and dynamic material properties.</p>
               </div>
             </aside>
           </div>
         </div>
 
-        <!-- Project 3: Raylib -->
+        <!-- Project 03: Raylib -->
         <div class="project-row fade-in" tabindex="0">
           <article class="project-card main-card">
-            <div class="card-media">
-              <svg viewBox="0 0 600 338" xmlns="http://www.w3.org/2000/svg">
-                <rect width="600" height="338" fill="#1c1917"/>
-                <defs>
-                  <radialGradient id="rayGlow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#fcc603" stop-opacity="0.15"/>
-                    <stop offset="100%" stop-color="#1c1917" stop-opacity="0"/>
-                  </radialGradient>
-                </defs>
-                <rect width="600" height="338" fill="url(#rayGlow)"/>
-                <g stroke="#fcc603" stroke-width="2" fill="none">
-                  <rect x="255" y="105" width="90" height="90" rx="6"/>
-                  <circle cx="300" cy="150" r="22"/>
-                  <line x1="230" y1="150" x2="255" y2="150"/>
-                  <line x1="345" y1="150" x2="370" y2="150"/>
-                  <line x1="300" y1="80" x2="300" y2="105"/>
-                  <line x1="300" y1="195" x2="300" y2="220"/>
-                </g>
-                <text x="300" y="255" text-anchor="middle" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="13" letter-spacing="3">RAYLIB C++ ENGINE DEMO</text>
-                <text x="300" y="278" text-anchor="middle" fill="#a8a29e" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1">LOW LEVEL RENDERING &amp; MATH</text>
-              </svg>
+            <div class="media-box main-media">
+              <img 
+                src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=80" 
+                alt="Raylib Project Preview" 
+                class="card-img"
+              >
             </div>
-            <div class="card-body">
+            <div class="card-content">
               <div class="card-header">
-                <h3>Raylib Mechanics &amp; Math</h3>
+                <h3>Raylib Project</h3>
                 <span class="tag">Raylib</span>
               </div>
-              <p>Custom 2D physics resolving, spatial partitioning grid, and lightweight rendering loop.</p>
+              <p>Low-level experiment exploring foundational game loops, math, and rendering pipelines.</p>
             </div>
           </article>
 
           <div class="wings-subgrid">
             <aside class="project-card wing-card wing-left">
-              <div class="card-media wing-media">
-                <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="400" height="240" fill="#0c0a09"/>
-                  <g stroke="#44403c" stroke-width="1">
-                    <line x1="60" y1="0" x2="60" y2="240"/>
-                    <line x1="140" y1="0" x2="140" y2="240"/>
-                    <line x1="220" y1="0" x2="220" y2="240"/>
-                    <line x1="300" y1="0" x2="300" y2="240"/>
-                    <line x1="0" y1="60" x2="400" y2="60"/>
-                    <line x1="0" y1="120" x2="400" y2="120"/>
-                    <line x1="0" y1="180" x2="400" y2="180"/>
-                  </g>
-                  <circle cx="140" cy="120" r="14" fill="#fcc603" opacity="0.8"/>
-                  <circle cx="205" cy="135" r="9" fill="#38bdf8" opacity="0.8"/>
-                  <circle cx="85" cy="90" r="10" fill="#ef4444" opacity="0.8"/>
-                  <text x="25" y="220" fill="#a8a29e" font-family="'JetBrains Mono', monospace" font-size="9">SPATIAL HASH GRID</text>
-                </svg>
+              <div class="media-box wing-media">
+                <img 
+                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80" 
+                  alt="Game Loop Detail" 
+                  class="card-img"
+                >
               </div>
-              <div class="wing-text">
-                <span class="wing-kicker">Algorithms</span>
-                <h4>Broadphase Grid</h4>
-                <p>Grid cell hashing to optimize pairwise collision checks.</p>
+              <div class="wing-content">
+                <span class="wing-tag">Engine Loop</span>
+                <p>Fixed-timestep update loop and deterministic movement math.</p>
               </div>
             </aside>
 
             <aside class="project-card wing-card wing-right">
-              <div class="card-media wing-media">
-                <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="400" height="240" fill="#0c0a09"/>
-                  <path d="M40 180 L120 70 L210 140 L310 50 L360 120" fill="none" stroke="#fcc603" stroke-width="2"/>
-                  <line x1="40" y1="180" x2="360" y2="180" stroke="#292524" stroke-width="1.5"/>
-                  <text x="35" y="210" fill="#78716c" font-family="'JetBrains Mono', monospace" font-size="9">FRAME TIME: 1.84ms</text>
-                </svg>
+              <div class="media-box wing-media">
+                <img 
+                  src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=500&q=80" 
+                  alt="Collision Math Detail" 
+                  class="card-img"
+                >
               </div>
-              <div class="wing-text">
-                <span class="wing-kicker">Core Loop</span>
-                <h4>Fixed Timestep</h4>
-                <p>Deterministic accumulator loop for physics stability.</p>
+              <div class="wing-content">
+                <span class="wing-tag">Math &amp; Physics</span>
+                <p>Custom 2D vector mathematics and swept collision testing.</p>
               </div>
             </aside>
           </div>
@@ -312,9 +215,9 @@
 
     <!-- Footer -->
     <footer class="footer fade-in">
-      <p>&copy; Harry Dillamore &bull; Built with HTML &amp; CSS</p>
+      <p>&copy; Harry Dillamore</p>
     </footer>
-    
+
   </div>
 
   <script>
