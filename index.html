@@ -3,22 +3,405 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harry Dillamore - Game Developer</title>
+  <title>Harry Dillamore — Game Developer</title>
+  
+  <!-- Primary font: Sen | Accent & metadata font: JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Sen:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #fcc603;
+      --accent-glow: rgba(252, 198, 3, 0.28);
+      --bg: #fafafa;
+      --card-bg: #ffffff;
+      --border: #e5e5e5;
+      --border-hover: #171717;
+      --text-main: #171717;
+      --text-muted: #525252;
+      --text-faint: #737373;
+      --bg-subtle: #f5f5f5;
+      --container-width: 580px;
+      --wing-width: 215px;
+      --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Sen', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 4.5rem 1.25rem 6rem;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    ::selection {
+      background-color: var(--accent);
+      color: #000000;
+    }
+
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Scroll Fade-In Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s var(--transition-smooth), transform 0.6s var(--transition-smooth);
+      will-change: opacity, transform;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3.75rem;
+    }
+
+    .avatar-wrapper {
+      margin: 0 auto 1.35rem auto;
+      width: 106px;
+      height: 106px;
+      position: relative;
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #ffffff;
+      box-shadow: 0 0 0 2.5px var(--accent), 0 6px 18px var(--accent-glow);
+      display: block;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .avatar:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 0 3.5px var(--accent), 0 8px 22px var(--accent-glow);
+    }
+
+    .name {
+      font-size: 2.15rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.25rem;
+    }
+
+    .role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 1rem;
+    }
+
+    .bio {
+      color: var(--text-muted);
+      font-size: 0.975rem;
+      max-width: 470px;
+      margin: 0 auto 1.4rem;
+      line-height: 1.6;
+    }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+
+    .links a {
+      color: var(--text-main);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: var(--accent);
+      transition: text-decoration-color 0.15s ease, color 0.15s ease;
+    }
+
+    .links a:hover {
+      text-decoration-color: var(--text-main);
+      color: #000000;
+    }
+
+    .section {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title {
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-faint);
+      margin-bottom: 1.15rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    .stack-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.65rem 1rem;
+    }
+
+    .stack-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+      border-bottom: 1px solid #f2f2f2;
+      border-left: 2px solid transparent;
+      font-size: 0.95rem;
+      transition: border-left-color 0.2s ease;
+    }
+
+    .stack-item:last-child {
+      border-bottom: none;
+    }
+
+    .stack-item:hover {
+      border-left-color: var(--accent);
+    }
+
+    .stack-item .label {
+      color: var(--text-faint);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.825rem;
+    }
+
+    .stack-item .value {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 2.75rem;
+    }
+
+    .project-row {
+      position: relative;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: var(--card-bg);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .main-card {
+      position: relative;
+      z-index: 10;
+      padding: 0 0 1.25rem 0;
+    }
+
+    .project-row:hover .main-card,
+    .project-row:focus-within .main-card {
+      border-color: var(--border-hover);
+      box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.06);
+    }
+
+    .project-image-wrapper {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: var(--bg-subtle);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s var(--transition-smooth);
+    }
+
+    .project-row:hover .main-card .project-image {
+      transform: scale(1.02);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 1.1rem 1.25rem 0.35rem 1.25rem;
+    }
+
+    .project-header h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      background: var(--bg-subtle);
+      border-left: 2px solid var(--accent);
+      color: var(--text-muted);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+    }
+
+    .main-card p {
+      color: var(--text-muted);
+      font-size: 0.925rem;
+      padding: 0 1.25rem;
+      line-height: 1.6;
+    }
+
+    /* Common Wing Card Stylings */
+    .wing-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .wing-thumb {
+      aspect-ratio: 16 / 10;
+      background-color: var(--bg-subtle);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .wing-content {
+      padding: 0.65rem 0.85rem 0.85rem 0.85rem;
+    }
+
+    .wing-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .wing-content p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Desktop Viewport (> 1080px): Auxiliary Wings Slide & Fade in from center */
+    @media (min-width: 1081px) {
+      .wings-subgrid {
+        display: contents;
+      }
+
+      .wing-card {
+        position: absolute;
+        top: 50%;
+        width: var(--wing-width);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 5;
+        box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.07);
+        transition: transform 0.45s var(--transition-smooth), opacity 0.35s ease;
+      }
+
+      .wing-left {
+        right: 100%;
+        margin-right: 20px;
+        transform: translate(35px, -50%) scale(0.96);
+      }
+
+      .wing-right {
+        left: 100%;
+        margin-left: 20px;
+        transform: translate(-35px, -50%) scale(0.96);
+      }
+
+      .project-row:hover .wing-left,
+      .project-row:focus-within .wing-left {
+        opacity: 1;
+        transform: translate(0, -50%) scale(1);
+        pointer-events: auto;
+      }
+
+      .project-row:hover .wing-right,
+      .project-row:focus-within .wing-right {
+        opacity: 1;
+        transform: translate(0, -50%) scale(1);
+        pointer-events: auto;
+      }
+    }
+
+    /* Smaller Screens (<= 1080px): Wings form a 2-column side-by-side grid underneath */
+    @media (max-width: 1080px) {
+      .wings-subgrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.85rem;
+        margin-top: 0.85rem;
+      }
+
+      .wing-card {
+        opacity: 1;
+        pointer-events: auto;
+        position: static;
+        width: 100%;
+        box-shadow: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      body {
+        padding-top: 3.5rem;
+      }
+      .name {
+        font-size: 1.85rem;
+      }
+      .wing-content {
+        padding: 0.5rem 0.65rem 0.65rem 0.65rem;
+      }
+    }
+
+    .footer {
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-faint);
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
 </head>
 <body>
-  <div class="site-wrapper">
+  <div class="container">
 
-    <!-- Header / Bio -->
+    <!-- Header Section -->
     <header class="header fade-in">
-      <div class="avatar-container">
-        <!-- Replace src with your image path (e.g. ./assets/avatar.jpg) -->
+      <div class="avatar-wrapper">
+        <!-- Replace src with your local or hosted image, e.g. assets/avatar.jpg -->
         <img 
-          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" 
-          alt="Harry Dillamore profile picture" 
+          src="https://placehold.co/220x220/f0f0f0/737373?text=Profile" 
+          alt="Harry Dillamore avatar" 
           class="avatar"
         >
       </div>
@@ -31,11 +414,11 @@
         <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
         <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://itch.io" target="_blank" rel="noopener">itch.io</a>
-        <a href="mailto:contact@example.com">Email</a>
+        <a href="mailto:harrydillamore@example.com">Email</a>
       </div>
     </header>
 
-    <!-- Focus Areas -->
+    <!-- Focus Areas Section -->
     <section class="section fade-in">
       <h2 class="section-title">Focus Areas</h2>
       <div class="stack-list">
@@ -54,57 +437,42 @@
       </div>
     </section>
 
-    <!-- Selected Work -->
+    <!-- Selected Work Section -->
     <section class="section fade-in">
       <h2 class="section-title">Selected Work</h2>
-      
       <div class="projects">
 
         <!-- Project 01: Unreal Engine -->
         <div class="project-row fade-in" tabindex="0">
           <article class="project-card main-card">
-            <div class="media-box main-media">
-              <img 
-                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80" 
-                alt="Unreal Engine Project Preview" 
-                class="card-img"
-              >
+            <div class="project-image-wrapper">
+              <img src="https://placehold.co/800x450/f0f0f0/737373?text=Unreal+Engine+Project" alt="Unreal Engine Project Preview" class="project-image">
             </div>
-            <div class="card-content">
-              <div class="card-header">
-                <h3>Unreal Engine Project</h3>
-                <span class="tag">Unreal Engine</span>
-              </div>
-              <p>Primary focus project exploring character mechanics, state machines, and shader implementations.</p>
+            <div class="project-header">
+              <h3>Project Title 01</h3>
+              <span class="tag">Unreal Engine</span>
             </div>
+            <p>Core gameplay loop, player locomotion system, and customized shader passes built in Unreal.</p>
           </article>
 
           <div class="wings-subgrid">
-            <aside class="project-card wing-card wing-left">
-              <div class="media-box wing-media">
-                <img 
-                  src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=500&q=80" 
-                  alt="Gameplay Mechanics Detail" 
-                  class="card-img"
-                >
+            <aside class="wing-card wing-left">
+              <div class="project-image-wrapper wing-thumb">
+                <img src="https://placehold.co/400x250/f5f5f5/888888?text=Tech+Art+Graph" alt="Technical art graph preview" class="project-image">
               </div>
               <div class="wing-content">
-                <span class="wing-tag">Gameplay</span>
-                <p>System mechanics, player controller logic, and input buffering.</p>
+                <span class="wing-tag">Technical Art</span>
+                <p>Custom material nodes, vertex displacement, and runtime parameter controls.</p>
               </div>
             </aside>
 
-            <aside class="project-card wing-card wing-right">
-              <div class="media-box wing-media">
-                <img 
-                  src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=500&q=80" 
-                  alt="Technical Art Detail" 
-                  class="card-img"
-                >
+            <aside class="wing-card wing-right">
+              <div class="project-image-wrapper wing-thumb">
+                <img src="https://placehold.co/400x250/f5f5f5/888888?text=Gameplay+Systems" alt="Gameplay systems diagram" class="project-image">
               </div>
               <div class="wing-content">
-                <span class="wing-tag">Tech Art</span>
-                <p>Material functions, custom post-process passes, and visual polish.</p>
+                <span class="wing-tag">Gameplay Systems</span>
+                <p>Event-driven gameplay framework and state machine implementation.</p>
               </div>
             </aside>
           </div>
@@ -113,48 +481,34 @@
         <!-- Project 02: Unity -->
         <div class="project-row fade-in" tabindex="0">
           <article class="project-card main-card">
-            <div class="media-box main-media">
-              <img 
-                src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=900&q=80" 
-                alt="Unity Project Preview" 
-                class="card-img"
-              >
+            <div class="project-image-wrapper">
+              <img src="https://placehold.co/800x450/f0f0f0/737373?text=Unity+Project" alt="Unity Project Preview" class="project-image">
             </div>
-            <div class="card-content">
-              <div class="card-header">
-                <h3>Unity Prototype</h3>
-                <span class="tag">Unity</span>
-              </div>
-              <p>Gameplay systems and C# architecture focused on modular interaction and visual effects.</p>
+            <div class="project-header">
+              <h3>Project Title 02</h3>
+              <span class="tag">Unity</span>
             </div>
+            <p>Character mechanics, responsive camera controller, and shader graph experiments in Unity.</p>
           </article>
 
           <div class="wings-subgrid">
-            <aside class="project-card wing-card wing-left">
-              <div class="media-box wing-media">
-                <img 
-                  src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=500&q=80" 
-                  alt="C# Architecture Detail" 
-                  class="card-img"
-                >
+            <aside class="wing-card wing-left">
+              <div class="project-image-wrapper wing-thumb">
+                <img src="https://placehold.co/400x250/f5f5f5/888888?text=VFX+Graph" alt="Visual effects preview" class="project-image">
               </div>
               <div class="wing-content">
-                <span class="wing-tag">C# Architecture</span>
-                <p>Event-driven architecture and decoupled gameplay managers.</p>
+                <span class="wing-tag">Visual Effects</span>
+                <p>Particle simulations, dynamic lighting responses, and screen-space effects.</p>
               </div>
             </aside>
 
-            <aside class="project-card wing-card wing-right">
-              <div class="media-box wing-media">
-                <img 
-                  src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500&q=80" 
-                  alt="Shader Graph Detail" 
-                  class="card-img"
-                >
+            <aside class="wing-card wing-right">
+              <div class="project-image-wrapper wing-thumb">
+                <img src="https://placehold.co/400x250/f5f5f5/888888?text=Mechanics" alt="Gameplay loop preview" class="project-image">
               </div>
               <div class="wing-content">
-                <span class="wing-tag">Shaders</span>
-                <p>URP Shader Graph workflows and dynamic material properties.</p>
+                <span class="wing-tag">Mechanics</span>
+                <p>Inventory data management and modular player ability components.</p>
               </div>
             </aside>
           </div>
@@ -163,48 +517,34 @@
         <!-- Project 03: Raylib -->
         <div class="project-row fade-in" tabindex="0">
           <article class="project-card main-card">
-            <div class="media-box main-media">
-              <img 
-                src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=80" 
-                alt="Raylib Project Preview" 
-                class="card-img"
-              >
+            <div class="project-image-wrapper">
+              <img src="https://placehold.co/800x450/f0f0f0/737373?text=Raylib+Project" alt="Raylib Project Preview" class="project-image">
             </div>
-            <div class="card-content">
-              <div class="card-header">
-                <h3>Raylib Project</h3>
-                <span class="tag">Raylib</span>
-              </div>
-              <p>Low-level experiment exploring foundational game loops, math, and rendering pipelines.</p>
+            <div class="project-header">
+              <h3>Project Title 03</h3>
+              <span class="tag">Raylib</span>
             </div>
+            <p>Custom game loop, physics integration, and rendering pipeline exploration built with C and Raylib.</p>
           </article>
 
           <div class="wings-subgrid">
-            <aside class="project-card wing-card wing-left">
-              <div class="media-box wing-media">
-                <img 
-                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80" 
-                  alt="Game Loop Detail" 
-                  class="card-img"
-                >
+            <aside class="wing-card wing-left">
+              <div class="project-image-wrapper wing-thumb">
+                <img src="https://placehold.co/400x250/f5f5f5/888888?text=Low-Level+Graphics" alt="Low-level graphics preview" class="project-image">
               </div>
               <div class="wing-content">
-                <span class="wing-tag">Engine Loop</span>
-                <p>Fixed-timestep update loop and deterministic movement math.</p>
+                <span class="wing-tag">Low-Level Graphics</span>
+                <p>Custom 2D/3D batching passes, collision primitives, and frame timing.</p>
               </div>
             </aside>
 
-            <aside class="project-card wing-card wing-right">
-              <div class="media-box wing-media">
-                <img 
-                  src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=500&q=80" 
-                  alt="Collision Math Detail" 
-                  class="card-img"
-                >
+            <aside class="wing-card wing-right">
+              <div class="project-image-wrapper wing-thumb">
+                <img src="https://placehold.co/400x250/f5f5f5/888888?text=C+Architecture" alt="C architecture snippet" class="project-image">
               </div>
               <div class="wing-content">
-                <span class="wing-tag">Math &amp; Physics</span>
-                <p>Custom 2D vector mathematics and swept collision testing.</p>
+                <span class="wing-tag">C Architecture</span>
+                <p>Memory-conscious struct organization and procedural generation utilities.</p>
               </div>
             </aside>
           </div>
@@ -221,6 +561,7 @@
   </div>
 
   <script>
+    // Intersection Observer for scroll fade-in transitions
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
