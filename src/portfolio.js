@@ -1,57 +1,62 @@
 /**
  * @file portfolio.js
- * @brief Core client-side interaction pipeline and animation controllers.
+ * @brief Core client-side execution engine for the Harry Dillamore portfolio site.
  * @author Harry Dillamore
- * @version 1.1.0
+ * @version 1.2.0
  */
 
 /**
  * @class PortfolioUI
- * @brief Master controller for DOM transitions, intersection observers, and UI modal states.
- * 
- * Implemented as a modular namespace to isolate DOM queries and maintain high frame timing
- * across hardware acceleration barriers.
+ * @brief Singleton UI controller managing component lifecycles, event listeners, and layout states.
  */
+
+/**
+ * @var {Object} PortfolioUI.config
+ * @memberof PortfolioUI
+ * @brief Runtime threshold values and CSS target selectors for DOM queries.
+ */
+
+/**
+ * @var {number} PortfolioUI.threshold
+ * @memberof PortfolioUI
+ * @brief Viewport intersection ratio required to trigger visibility.
+ * @note Set to 0.12 (12% of the element must enter the viewport).
+ */
+
+/**
+ * @var {string} PortfolioUI.fadeSelector
+ * @memberof PortfolioUI
+ * @brief CSS class selector identifying elements pending scroll entry animations.
+ * @note Default value: '.fade-in'
+ */
+
+/**
+ * @var {string} PortfolioUI.projectRowSelector
+ * @memberof PortfolioUI
+ * @brief CSS class selector identifying primary project display cards.
+ * @note Default value: '.project-row'
+ */
+
+/**
+ * @var {boolean} PortfolioUI.isInitialized
+ * @memberof PortfolioUI
+ * @brief Guard flag indicating whether event listeners and observers have executed.
+ * @default false
+ */
+
 const PortfolioUI = {
-  /**
-   * @brief Global configuration values for UI event listeners and observers.
-   * @type {Object}
-   */
   config: {
-    /**
-     * @brief Intersection ratio required before triggering CSS visibility classes.
-     * @type {number}
-     */
     threshold: 0.12,
-
-    /**
-     * @brief Target query selector for scroll-animated containers.
-     * @type {string}
-     */
     fadeSelector: '.fade-in',
-
-    /**
-     * @brief Target query selector for interactive project showcases.
-     * @type {string}
-     */
     projectRowSelector: '.project-row'
   },
 
-  /**
-   * @brief Internal flag preventing duplicate observer attachment.
-   * @type {boolean}
-   */
   isInitialized: false,
 
   /**
    * @fn initScrollObserver
    * @memberof PortfolioUI
-   * @brief Binds an IntersectionObserver to lazy-animate elements into view.
-   * @details Identifies all elements matching `config.fadeSelector`. Once an element crosses
-   *          the specified `config.threshold`, the `.visible` CSS class is attached and the 
-   *          element is unobserved to eliminate unnecessary draw/layout thrashing.
-   * 
-   * @note Requires modern browser support for IntersectionObserver (fallback: elements remain static).
+   * @brief Discovers deferred elements and registers them to an IntersectionObserver instance.
    * @return {void}
    */
   initScrollObserver: function () {
@@ -75,13 +80,13 @@ const PortfolioUI = {
   /**
    * @fn initProjectInteractions
    * @memberof PortfolioUI
-   * @brief Enables touch and keyboard toggling for auxiliary project wing panels.
-   * @details Translates hover-driven wing animations to mobile taps and accessible
-   *          keyboard navigation (Space / Enter triggers).
-   * @return {void}
+   * @brief Establishes accessibility, mouse, and touch listeners for project showcase cards.
+   * @param {string} [rowSelector=this.config.projectRowSelector] Target CSS selector for project articles.
+   * @return {number} Count of successfully registered interactive cards.
    */
-  initProjectInteractions: function () {
-    const rows = document.querySelectorAll(this.config.projectRowSelector);
+  initProjectInteractions: function (rowSelector = this.config.projectRowSelector) {
+    const rows = document.querySelectorAll(rowSelector);
+    if (!rows.length) return 0;
 
     rows.forEach((row) => {
       row.addEventListener('keydown', (event) => {
@@ -96,18 +101,20 @@ const PortfolioUI = {
         row.classList.toggle('active-focus');
       });
     });
+
+    return rows.length;
   },
 
   /**
    * @fn initImageModal
    * @memberof PortfolioUI
-   * @brief Instantiates a dynamic full-viewport lightbox overlay for project graphics.
-   * @param {string} [imageSelector='.project-image'] Target query selector for clickable preview images.
-   * @return {void}
+   * @brief Injects a reusable DOM lightbox modal to inspect game graphics and technical art.
+   * @param {string} [imageSelector='.project-image'] Query selector identifying clickable artwork.
+   * @return {boolean} True if initialized, false if no images exist.
    */
   initImageModal: function (imageSelector = '.project-image') {
     const images = document.querySelectorAll(imageSelector);
-    if (!images.length) return;
+    if (!images.length) return false;
 
     const modal = document.createElement('div');
     modal.className = 'portfolio-modal';
@@ -140,20 +147,23 @@ const PortfolioUI = {
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
     });
+
+    return true;
   },
 
   /**
    * @fn init
    * @memberof PortfolioUI
-   * @brief Main bootstrap procedure initializing all UI subroutines sequentially.
-   * @return {void}
+   * @brief Primary entry point triggered on `DOMContentLoaded`.
+   * @return {boolean} True if initialized during this call, false if already running.
    */
   init: function () {
-    if (this.isInitialized) return;
+    if (this.isInitialized) return false;
     this.initScrollObserver();
     this.initProjectInteractions();
     this.initImageModal();
     this.isInitialized = true;
+    return true;
   }
 };
 
