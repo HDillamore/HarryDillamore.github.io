@@ -202,6 +202,7 @@
 
     .project-row {
       position: relative;
+      cursor: pointer;
     }
 
     .project-card {
@@ -219,7 +220,8 @@
     }
 
     .project-row:hover .main-card,
-    .project-row:focus-within .main-card {
+    .project-row:focus-within .main-card,
+    .project-row.active-focus .main-card {
       border-color: var(--border-hover);
       box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.06);
     }
@@ -240,7 +242,8 @@
       transition: transform 0.4s var(--transition-smooth);
     }
 
-    .project-row:hover .main-card .project-image {
+    .project-row:hover .main-card .project-image,
+    .project-row.active-focus .main-card .project-image {
       transform: scale(1.02);
     }
 
@@ -265,6 +268,7 @@
       color: var(--text-muted);
       padding: 0.15rem 0.5rem;
       border-radius: 2px;
+      text-decoration: none;
     }
 
     .main-card p {
@@ -272,6 +276,28 @@
       font-size: 0.925rem;
       padding: 0 1.25rem;
       line-height: 1.6;
+    }
+
+    .project-card-actions {
+      padding: 0.85rem 1.25rem 0;
+    }
+
+    .docs-btn {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-main);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.35rem 0.75rem;
+      text-decoration: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .docs-btn:hover {
+      border-color: var(--accent);
+      background: #ffffff;
     }
 
     /* Common Wing Card Stylings */
@@ -308,7 +334,7 @@
       line-height: 1.45;
     }
 
-    /* Desktop Viewport (> 1080px): Auxiliary Wings Slide & Fade in from center */
+    /* Desktop Viewport (> 1080px): Wings Slide & Fade in from center */
     @media (min-width: 1081px) {
       .wings-subgrid {
         display: contents;
@@ -338,14 +364,16 @@
       }
 
       .project-row:hover .wing-left,
-      .project-row:focus-within .wing-left {
+      .project-row:focus-within .wing-left,
+      .project-row.active-focus .wing-left {
         opacity: 1;
         transform: translate(0, -50%) scale(1);
         pointer-events: auto;
       }
 
       .project-row:hover .wing-right,
-      .project-row:focus-within .wing-right {
+      .project-row:focus-within .wing-right,
+      .project-row.active-focus .wing-right {
         opacity: 1;
         transform: translate(0, -50%) scale(1);
         pointer-events: auto;
@@ -382,6 +410,70 @@
       }
     }
 
+    /* Modal / Lightbox Styles */
+    .portfolio-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .portfolio-modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 85vh;
+      z-index: 10;
+    }
+
+    .modal-img {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 6px;
+      display: block;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid #ffffff;
+      background: #171717;
+      color: #ffffff;
+      font-size: 1.25rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .footer {
       text-align: center;
       font-family: 'JetBrains Mono', monospace;
@@ -413,7 +505,8 @@
         <a href="https://github.com/Harry-Dillamore" target="_blank" rel="noopener">GitHub</a>
         <a href="https://uk.linkedin.com/in/harry-dillamore-34a889395" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://harry-dillamore.itch.io/" target="_blank" rel="noopener">itch.io</a>
-        <a href="harrydillamore@gmail.com">Email</a>
+        <a href="mailto:harrydillamore@gmail.com">Email</a>
+        <a href="./docs/index.html">API Docs</a>
       </div>
     </header>
 
@@ -445,13 +538,16 @@
         <div class="project-row fade-in" tabindex="0">
           <article class="project-card main-card">
             <div class="project-image-wrapper">
-              <img src="https://img.itch.zone/aW1hZ2UvNDA5ODQ1NS8yNDQyODg0NS5wbmc=/794x1000/shiP7O.png" alt="Unreal Engine Project Preview" class="project-image">
+              <img src="https://img.itch.zone/aW1hZ2UvNDA5ODQ1NS8yNDQyODg0NS5wbmc=/794x1000/shiP7O.png" alt="Colourways Game Screenshot" class="project-image">
             </div>
             <div class="project-header">
               <h3>Colourways</h3>
               <span class="tag">Unreal Engine</span>
             </div>
-            <p>A small puzzle game developed in unreal engine, using real time texture painting combined with global shaders to allow you to uncover the world around you through paint and trial and error.</p>
+            <p>A small puzzle game developed in Unreal Engine, using real time texture painting combined with global shaders to allow you to uncover the world around you through paint and trial and error.</p>
+            <div class="project-card-actions">
+              <a href="./docs/index.html" class="docs-btn">View Code Documentation &rarr;</a>
+            </div>
           </article>
 
           <div class="wings-subgrid">
@@ -467,7 +563,7 @@
 
             <aside class="wing-card wing-right">
               <div class="project-image-wrapper wing-thumb">
-                <img src="https://img.itch.zone/aW1hZ2UvNDA5ODQ1NS8yNTY3NTg3OS5wbmc=/794x1000/r76TXx.png" class="project-image">
+                <img src="https://img.itch.zone/aW1hZ2UvNDA5ODQ1NS8yNTY3NTg3OS5wbmc=/794x1000/r76TXx.png" alt="Gameplay preview" class="project-image">
               </div>
               <div class="wing-content">
                 <span class="wing-tag">Gameplay Systems</span>
@@ -559,20 +655,7 @@
 
   </div>
 
-  <script>
-    // Intersection Observer for scroll fade-in transitions
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.12
-    });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
+  <!-- External Script documented with Doxygen -->
+  <script src="src/portfolio.js"></script>
 </body>
 </html>

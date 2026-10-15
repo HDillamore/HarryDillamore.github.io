@@ -6,15 +6,13 @@
  */
 
 /**
- * @namespace PortfolioUI
+ * @class PortfolioUI
  * @brief Modular controller for portfolio layout behaviors and element animations.
  */
 const PortfolioUI = {
   /**
    * @brief Configuration thresholds and settings for layout observers.
    * @type {Object}
-   * @property {number} threshold - Viewport intersection ratio required to trigger visibility.
-   * @property {string} fadeSelector - CSS class target for scroll-triggered elements.
    */
   config: {
     threshold: 0.12,
@@ -28,6 +26,8 @@ const PortfolioUI = {
   isInitialized: false,
 
   /**
+   * @fn initScrollObserver
+   * @memberof PortfolioUI
    * @brief Initializes the IntersectionObserver to handle smooth scroll reveal transitions.
    * @details Observes all DOM elements matching `config.fadeSelector`. When an element enters
    *          the viewport, adds the `visible` class and unobserves to optimize runtime performance.
@@ -53,6 +53,8 @@ const PortfolioUI = {
   },
 
   /**
+   * @fn observeDynamicElement
+   * @memberof PortfolioUI
    * @brief Utility helper to dynamically register new interactive project cards.
    * @param {string} containerSelector - CSS selector for target element.
    * @return {boolean} True if element exists and was observed.
