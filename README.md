@@ -2,8 +2,8 @@
 
 A modern, responsive personal portfolio website showcasing game development work across Unreal Engine 5, Unity, and Raylib/C. The repository features an automated CI/CD pipeline built with GitHub Actions that compiles code documentation via Doxygen on every push and deploys both the portfolio and documentation directly to GitHub Pages.
 
-- **Live Portfolio URL**: [https://hdillamore.github.io/](https://hdillamore.github.io/)
-- **Live Documentation URL**: [https://hdillamore.github.io/docs/](https://hdillamore.github.io/docs/)
+- **Live Portfolio URL**: [https://hdillamore.github.io/HarryDillamore.github.io/](https://hdillamore.github.io/HarryDillamore.github.io/)
+- **Live Documentation URL**: [https://hdillamore.github.io/HarryDillamore.github.io/docs/index.html](https://hdillamore.github.io/HarryDillamore.github.io/docs/index.html)
 
 ---
 
